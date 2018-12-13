@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:UITableViewTest"
+             xmlns:controls="clr-namespace:UITableViewTest.CustomControls"
+             xmlns:converters="clr-namespace:UITableViewTest.Converters"
+             x:Class="UITableViewTest.MainPage">
+    <ContentPage.Resources>
+        <converters:HtmlLabelConverter x:Key="HtmlLabelConverter"/>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <controls:ExtendedListView Grid.Row="0" x:Name="ExtendedListView" ItemsSource="{Binding ListViewSource}"/>
+        <Grid Grid.Row="1" HeightRequest="30" Opacity="0.5" x:Name="ButtonGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AddBtn" Text="Add" BackgroundColor="Green" Grid.Column="0" TextColor="White" Clicked="AddBtn_Clicked"/>
+            <Button x:Name="SubBtn" Text="Subtract" BackgroundColor="Red" Grid.Column="1" TextColor="White" Clicked="SubBtn_Clicked"/>
+            <Button x:Name="MoveBtn" Text="Move" BackgroundColor="Purple" Grid.Column="2" TextColor="White" Clicked="MoveBtn_Clicked"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Label FormattedText="{Binding HTMLString, Converter={StaticResource HtmlLabelConverter}}"/>
+        </Grid>
+    </Grid>
+
+</ContentPage>
