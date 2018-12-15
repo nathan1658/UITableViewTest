@@ -15,9 +15,20 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <controls:ExtendedListView Grid.Row="0" x:Name="ExtendedListView" ItemsSource="{Binding ListViewSource}"/>
+        <controls:ExtendedListView Grid.Row="0" x:Name="ExtendedListView" ItemsSource="{Binding ListViewSource}">
+            <controls:ExtendedListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell >
+                        <Frame Margin="5" BackgroundColor="Gray" HasShadow="False" >
+                            <Label  Text="{Binding .}"/>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </controls:ExtendedListView.ItemTemplate>
+        </controls:ExtendedListView>
         <Grid Grid.Row="1" HeightRequest="30" Opacity="0.5" x:Name="ButtonGrid">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -25,6 +36,7 @@
             <Button x:Name="AddBtn" Text="Add" BackgroundColor="Green" Grid.Column="0" TextColor="White" Clicked="AddBtn_Clicked"/>
             <Button x:Name="SubBtn" Text="Subtract" BackgroundColor="Red" Grid.Column="1" TextColor="White" Clicked="SubBtn_Clicked"/>
             <Button x:Name="MoveBtn" Text="Move" BackgroundColor="Purple" Grid.Column="2" TextColor="White" Clicked="MoveBtn_Clicked"/>
+            <Button x:Name="ScrollToBottom" Text="ScrollToBottom" BackgroundColor="Purple" Grid.Column="3" TextColor="White" Clicked="ScrollToBottom_Clicked"/>
         </Grid>
 
         <Grid Grid.Row="2">

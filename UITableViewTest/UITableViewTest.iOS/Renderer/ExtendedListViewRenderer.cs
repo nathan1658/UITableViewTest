@@ -21,11 +21,28 @@ namespace UITableViewTest.iOS.Renderer
             base.OnElementChanged(e);
             if(e.NewElement!=null)
             {
+                
                 var lv = e.NewElement as ExtendedListView;
                 lv.AddAction = new Action(Add);
                 lv.SubtractAction = new Action(Sub);
+                lv.ScrollAction = new Action(Scroll);
+                lv.HasUnevenRows = true;
             }
         }
+
+        void Scroll()
+        {
+            var contentHeight = Control.ContentSize.Height-Control.Frame.Height;
+            //var inset = Control.ContentInset;
+            //inset.Bottom = (nfloat)contentHeight;
+            //Control.ContentInset = inset;
+            //Control.ScrollIndicatorInsets = Control.ContentInset;
+            var offset = Control.ContentOffset;
+            offset.Y = contentHeight;
+            Control.SetContentOffset(offset, false);
+            
+        }
+
 
         void Add()
         {

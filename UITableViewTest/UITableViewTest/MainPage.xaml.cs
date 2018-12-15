@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+
+
+
 
 namespace UITableViewTest
 {
@@ -13,6 +17,10 @@ namespace UITableViewTest
         {
             InitializeComponent();
             this.BindingContext = new MainPageViewModel();
+
+            var list = ExtendedListView.ItemsSource as ObservableCollection<int>;
+            ExtendedListView.ScrollTo(list.Last(), ScrollToPosition.MakeVisible, false);
+
         }
 
         private void AddBtn_Clicked(object sender, EventArgs e)
@@ -36,17 +44,22 @@ namespace UITableViewTest
             moved = !moved;
 
         }
+
+        private void ScrollToBottom_Clicked(object sender, EventArgs e)
+        {
+            ExtendedListView.Scroll();
+        }
     }
 
     public class MainPageViewModel
     {
-        public List<int> ListViewSource { get; set; }
+        public ObservableCollection<int> ListViewSource { get; set; }
         public string HTMLString { get; set; }
 
 
         public MainPageViewModel()
         {
-            var list = new List<int>();
+            var list = new ObservableCollection<int>();
             for (int i = 0; i < 100; i++)
             {
                 list.Add(i);
