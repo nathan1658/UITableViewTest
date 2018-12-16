@@ -10,8 +10,8 @@ namespace UITableViewTest
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new Page1());
+            //MainPage = new MainPage();
         }
 
         protected override void OnStart()

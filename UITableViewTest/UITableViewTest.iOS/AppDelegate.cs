@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using KeyboardOverlap.Forms.Plugin.iOSUnified;
 using UIKit;
 
 namespace UITableViewTest.iOS
@@ -24,7 +25,7 @@ namespace UITableViewTest.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
-
+            KeyboardOverlapRenderer.Init();
             return base.FinishedLaunching(app, options);
         }
     }

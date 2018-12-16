@@ -8,24 +8,26 @@
     <ContentPage.Resources>
         <converters:HtmlLabelConverter x:Key="HtmlLabelConverter"/>
     </ContentPage.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-
-        <controls:ExtendedListView Grid.Row="0" x:Name="ExtendedListView" ItemsSource="{Binding ListViewSource}">
+  
+            <controls:ExtendedListView Grid.Row="0" x:Name="ExtendedListView" ItemsSource="{Binding ListViewSource}">
             <controls:ExtendedListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell >
-                        <Frame Margin="5" BackgroundColor="Gray" HasShadow="False" >
+                        <!--<Frame Margin="5" BackgroundColor="Gray" HasShadow="False" >-->
                             <Label  Text="{Binding .}"/>
-                        </Frame>
+                        <!--</Frame>-->
                     </ViewCell>
                 </DataTemplate>
             </controls:ExtendedListView.ItemTemplate>
         </controls:ExtendedListView>
+  
         <Grid Grid.Row="1" HeightRequest="30" Opacity="0.5" x:Name="ButtonGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -40,7 +42,14 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <Label FormattedText="{Binding HTMLString, Converter={StaticResource HtmlLabelConverter}}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+                <Editor Grid.Column="0" BackgroundColor="Gray"/>
+                <Label Grid.Column="1" Text="Send" TextColor="Blue" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+            </Grid>
         </Grid>
     </Grid>
 
